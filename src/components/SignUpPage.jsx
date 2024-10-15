@@ -1,6 +1,8 @@
 import React from 'react'
 import logo from "../assets/Logo.png"
 import googleLogo from "../assets/GoogleLogo.png"
+import { Link } from 'react-router-dom'
+
 
 function SignUpPage({handleLogin}) {
   return (
@@ -31,7 +33,7 @@ function SignUpPage({handleLogin}) {
      Sign Up
     </button>
     <p className='mt-6 lg:text-[14px] text-[10px]'>
-    Have an account? <span className='text-[#4153f0] cursor-pointer'  onClick={handleLogin}>Log In</span>
+    Have an account? <span className='text-[#4153f0] cursor-pointer'  onClick={handleLogin}><Link to="/"> Log In</Link></span>
     </p>
    
   </div>

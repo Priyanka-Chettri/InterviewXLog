@@ -26,7 +26,6 @@ function LandingPage() {
         
       <img src={landing} className='hidden md:hidden lg:flex lg:max-h-[750px] lg:pr-[100px] rounded-xl pb-3 object-contain lg:flex-1'></img>
       </div>
-    
     </div>
   )
 }

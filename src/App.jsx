@@ -1,12 +1,12 @@
-import LandingPage from "./components/LandingPage"
+import RoutesPage from "./RoutesPage";
+
+
 
 
 function App() {
 
   return (
-   <>
-   <LandingPage/>
-   </>
+   <RoutesPage/>
   )
 }
 
