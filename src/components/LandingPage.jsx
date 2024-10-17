@@ -1,7 +1,7 @@
 import React, {  useState } from 'react'
 import landing from "../assets/landing.png"
 import SignUpPage from './SignUpPage'
-import LoginPage from './LoginPAge'
+import LoginPage from './LoginPage'
 
 
 function LandingPage() {
@@ -17,7 +17,7 @@ function LandingPage() {
       <div className='flex pt-[10px] lg:pt-[50px] lg:mx-8 h-full lg:pr-[100px] pb-6 lg:space-x-[120px] justify-center items-center'>
        {isLogin ?  
        <div className='lg:pl-[200px]  lg:flex-1  '>
-        <LoginPage  handleLogin={handleLogin}/>
+        <LoginPage handleLogin={handleLogin}/>
         </div> :
         <div className='lg:pl-[200px] lg:flex-1'>
         <SignUpPage handleLogin={handleLogin}/>
