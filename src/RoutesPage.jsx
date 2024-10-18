@@ -3,6 +3,7 @@ import LandingPage from "./components/LandingPage"
 import {Routes, Route} from "react-router-dom"
 import HomePage from "./components/HomePage"
 import ArticlePage from './components/ArticlePage'
+import AddYourExperience from './components/AddYourExperience'
 
 function RoutesPage() {
   return (
@@ -11,7 +12,8 @@ function RoutesPage() {
         <Route path='/signup' element={<LandingPage/>}/>
         <Route path='/home' element={<HomePage/>}/>
         <Route path='/article' element={<ArticlePage/>}/>
-
+        <Route path='/addmyexperience' element={<AddYourExperience/>}/>
+       
    </Routes>
   )
 }

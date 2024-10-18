@@ -5,6 +5,7 @@ import filter from "../assets/filter.png"
 import Categories from './Categories'
 import ArticlePreview from './ArticlePreview'
 import interviewData from '../InterviewListData'
+import { Link } from 'react-router-dom'
 
 function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -29,7 +30,7 @@ function HomePage() {
         {/* Sidebar */}
         <div className={`
           ${isSidebarOpen ? 'flex' : 'hidden'} 
-          md:flex flex-col md:w-[300px] border bg-white border-r-gray-200 border-t-white fixed top-[71px] md:left-0 left-0 right-0 bottom-0
+          md:flex flex-col md:w-[300px] border border-r-gray-200 border-t-white fixed top-[71px] md:left-0 left-0 right-0 bottom-0
         `}>
           <div className='w-full border border-b-gray-200 border-t-white border-r-white h-[60px]'>
            <div className='flex gap-5  px-4 pt-5'>
@@ -41,13 +42,14 @@ function HomePage() {
           <Categories categoryName="roles"/>
           <Categories categoryName="years Of Experience"/>
           
-          <button className='h-10 rounded-xl border mx-3 my-9 text-white bg-[#4152f0] w-[calc(100%-24px)]'>
-            Add your experience
-          </button>        
+          <Link to="/addmyexperience" className='h-10 rounded-xl border mx-3 my-9 flex justify-center items-center text-white bg-[#4152f0] w-[calc(100%-24px)]'>
+             Add your experience
+          </Link>
+     
         </div>
 
         {/* Main content */}
-        <div className='md:ml-[300px] md:overflow-y-auto md:p-[100px] sm:p-6 pt-[100px] w-full'>
+        <div className='md:ml-[300px] md:overflow-y-auto md:p-[100px] h-screen sm:p-6 pt-[100px] w-full'>
           {interviewData.map((data, idx) => (
             <ArticlePreview 
               key={idx}
