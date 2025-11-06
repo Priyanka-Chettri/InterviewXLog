@@ -2,8 +2,6 @@ import React from "react";
 import { useState } from "react";
 import logo from "../assets/Logo.png";
 import copy from "../assets/copy.png";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import { Link } from "react-router-dom";
 import confetti from "../assets/confetti.png";
 import { useRef } from "react";
@@ -23,6 +21,9 @@ function AddYourExperience() {
   const [officeName, setOfficeName] = useState("");
   const [roleName, setRoleName] = useState("");
   const [interviewDate, setInterviewDate] = useState("");
+  const [title, setTitle] = useState("");
+  const [isTitleFocused, setIsTitleFocused] = useState(false);
+  const titleInputRef = useRef(null);
   const placeOfWork = [
     "Google",
     "Amazon",
@@ -58,6 +59,8 @@ function AddYourExperience() {
     setOpenAlert(false);
     setCopied(false);
     setValue("");
+    setTitle("");
+    setIsTitleFocused(false);
   };
 
   const handleCopy = () => {
@@ -86,15 +89,48 @@ function AddYourExperience() {
           </button>
         </div>
       </div>
-      <ReactQuill
-        theme="snow"
-        value={value}
-        onChange={(newValue) => setValue(newValue)}
-        className="mt-[80px] h-screen"
-      />
-      {/* <div className='mt-[100px]' 
-      dangerouslySetInnerHTML={{ __html: value}}
-      />  */}
+      <div className="mt-[80px] flex flex-col">
+        {/* Title Section - Medium Style */}
+        <div className="max-w-4xl mx-auto w-full px-4 md:px-8 mb-8">
+          <div className="relative">
+            {!isTitleFocused && !title && (
+              <div
+                className="absolute inset-0 flex items-center cursor-text text-gray-400 text-5xl md:text-6xl font-bold"
+                onClick={() => {
+                  setIsTitleFocused(true);
+                  titleInputRef.current?.focus();
+                }}
+              >
+                Title
+              </div>
+            )}
+            <input
+              ref={titleInputRef}
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              onFocus={() => setIsTitleFocused(true)}
+              onBlur={() => {
+                if (!title) {
+                  setIsTitleFocused(false);
+                }
+              }}
+              className="w-full text-5xl md:text-6xl font-bold outline-none bg-transparent text-gray-900 placeholder-transparent"
+              placeholder="Title"
+            />
+          </div>
+        </div>
+
+        {/* Content Section */}
+        <div className="max-w-4xl mx-auto w-full px-4 md:px-8 pb-20">
+          <textarea
+            value={value || ""}
+            onChange={(e) => setValue(e.target.value)}
+            className="w-full min-h-[400px] text-lg outline-none bg-transparent text-gray-900 resize-none"
+            placeholder="Start writing your experience..."
+          />
+        </div>
+      </div>
 
       {openAlert && (
         <div className="absolute bg-white md:top-[250px] ml-5 mr-5 w-[320px] pb-10 md:left-[500px] z-10 md:w-[450px] md:max-h-full top-[250px]  rounded-lg shadow-md shadow-gray-200 flex flex-col items-center space-y-4 md:px-10 md:pb-10 border border-[#4152f0]">
