@@ -42,6 +42,18 @@ function AddYourExperience() {
     "Other",
   ];
 
+  const YearsOfExperience = [
+    "Fresher",
+    "1Y",
+    "2Y",
+    "3Y",
+    "4Y",
+    "5Y",
+    "6Y",
+    "<7Y",
+    "Other",
+  ];
+
   console.log(`interview date is ${interviewDate}`);
 
   const handleOpenAlert = () => {
@@ -82,14 +94,14 @@ function AddYourExperience() {
         </Link>
         <div className="flex md:mr-4 ">
           <button
-            className="md:h-10 h-5 rounded-2xl border  text-white bg-[#4152f0] md:p-4 md:px-5 md:py-2 px-3 py-4 flex justify-center items-center mt-5 md:mt-0"
+            className="md:h-10 h-5 rounded-xl border text-white bg-[#4152f0] px-10 py-4 flex justify-center items-center mt-5 md:mt-0"
             onClick={handleOpenAlert}
           >
             Next
           </button>
         </div>
       </div>
-      <div className="mt-[80px] flex flex-col">
+      <div className="mt-[10%] flex flex-col">
         {/* Title Section - Medium Style */}
         <div className="max-w-4xl mx-auto w-full px-4 md:px-8 mb-8">
           <div className="relative">
@@ -133,15 +145,16 @@ function AddYourExperience() {
       </div>
 
       {openAlert && (
-        <div className="absolute bg-white md:top-[250px] ml-5 mr-5 w-[320px] pb-10 md:left-[500px] z-10 md:w-[450px] md:max-h-full top-[250px]  rounded-lg shadow-md shadow-gray-200 flex flex-col items-center space-y-4 md:px-10 md:pb-10 border border-[#4152f0]">
-          <div
-            className="text-[#434343] md:pl-[380px] mt-3 cursor-pointer pl-[250px]"
-            onClick={handleOpenAlert}
-          >
-            &times;
-          </div>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="relative bg-white w-[320px] md:w-[450px] max-h-[90vh] overflow-y-auto rounded-lg shadow-md shadow-gray-200 flex flex-col items-center space-y-4 px-5 md:px-10 pb-10 pt-[50px]">
+            <div
+              className="text-[#434343] absolute top-3 right-4 text-2xl cursor-pointer"
+              onClick={handleOpenAlert}
+            >
+              &times;
+            </div>
 
-          <div className="flex justify-center items-center mt-10 space-x-4 ">
+          <div className="flex justify-center items-center space-x-4 ">
             <p className="text-[#4152f0] font-bold text-[20px] ">
               Help us improve the experience.{" "}
             </p>
@@ -160,7 +173,6 @@ function AddYourExperience() {
               Enter the company name
             </option>
             {placeOfWork.map((officeName) => {
-              console.log(officeName);
               return <option value={officeName}>{officeName}</option>;
             })}
           </select>
@@ -184,7 +196,6 @@ function AddYourExperience() {
               Enter the role
             </option>
             {Roles.map((role) => {
-              console.log(role);
               return <option value={role}>{role}</option>;
             })}
           </select>
@@ -199,17 +210,39 @@ function AddYourExperience() {
             type="date"
             value={interviewDate}
             className="block appearance-none md:w-full  bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded shadow leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-            placeholder="Enter the name"
+            placeholder="Enter the date"
             onChange={(e) => {
               setInterviewDate(e.target.value);
             }}
           ></input>
+           <select
+            className="block appearance-none  md:w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded shadow leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+            onChange={(e) => {
+              setRoleName(e.target.value);
+            }}
+            value={roleName}
+          >
+            <option value="" disabled>
+              Enter the YOE
+            </option>
+            {YearsOfExperience.map((role) => {
+              return <option value={role}>{role}</option>;
+            })}
+          </select>
+          {roleName === "Other" && (
+            <input
+              type="text"
+              className="block appearance-none w-full  bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded shadow leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+              placeholder="Enter the YOE"
+            ></input>
+          )}
           <button
-            className="h-10 rounded-2xl border  text-white bg-[#4152f0] p-4 flex justify-center items-center"
+            className="h-10 rounded-xl border text-white bg-[#4152f0] px-10 py-4 flex justify-center items-center"
             onClick={handlePublish}
           >
             Publish
           </button>
+          </div>
         </div>
       )}
 

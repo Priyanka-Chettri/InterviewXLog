@@ -47,20 +47,22 @@ function HomePage() {
         {/* Sidebar */}
         <div
           className={`
-          ${isSidebarOpen ? "flex" : "hidden"} 
+          ${isSidebarOpen ? "flex" : "hidden"}  justify-between
           md:flex flex-col md:w-[300px] border border-r-gray-200 border-t-white fixed top-[71px] md:left-0 left-0 right-0 bottom-0 bg-white
         `}
         >
-          <div className="w-full border border-b-gray-200 border-t-white border-r-white h-[60px]">
-            <div className="flex gap-5  px-4 py-5">
+          <div className="w-full border border-b-gray-200 border-t-white border-r-white">
+            <div className="flex gap-5  px-4 py-5 border border-b-gray-200 border-r-white border-dashed">
               <img src={filter} className="w-6 h-6"></img>
               <p> Filters</p>
             </div>
-          </div>
+            <div className="flex flex-col justify-start">
           <Categories categoryName="companies" />
           <Categories categoryName="roles" />
           <Categories categoryName="years Of Experience" />
-
+          </div>
+          </div>
+          
           <Link
             to="/addmyexperience"
             className="rounded-xl border mx-3 my-4 py-2 flex justify-center items-center text-white bg-[#4152f0] w-[calc(100%-24px)]"
