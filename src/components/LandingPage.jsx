@@ -1,5 +1,5 @@
 import React, {  useState } from 'react'
-import landing from "../assets/landing.png"
+import landing from "../assets/svgs/landing.svg"
 import SignUpPage from './SignUpPage'
 import LoginPage from './LoginPage'
 
